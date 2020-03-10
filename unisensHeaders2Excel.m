@@ -9,7 +9,7 @@ function unisensHeaders2Excel(path)
 
     alldirs = rdir(path,'');
 
-    rowHeader={'path', 'measurementId', 'measurementStart', 'weekdayStart', 'sensorId', 'sensorType', 'sensorVersion', 'sensorLocation', 'duration', 'personId', 'age', 'height', 'weight', 'gender', 'entries', 'WARNING'};
+    rowHeader={'path', 'measurementId', 'measurementStart', 'weekdayStart', 'sensorId', 'sensorType', 'sensorVersion', 'sensorLocation', 'duration_h', 'personId', 'age', 'height', 'weight', 'gender', 'entries', 'WARNING'};
     j=0;
     rows={};
 
@@ -80,17 +80,17 @@ function unisensHeaders2Excel(path)
             age = str2double(customAttributes.get('age'));
             if isnan(age) || age <1 || age > 105
                 warn =true;
-                warnText = [warnText 'age missing. '];
+                warnText = [warnText 'age missing or out of range. '];
             end
             height = str2double(customAttributes.get('height'));
             if isnan(height) || height > 250
-                warnText = [warnText 'height missing. '];
+                warnText = [warnText 'height missing or out of range. '];
                 warn = true;
             end
             weight = str2double(customAttributes.get('weight'));
             if isnan(weight) || weight > 150
                 warn = true;
-                warnText = [warnText 'weight missing. '];
+                warnText = [warnText 'weight missing or out of range. '];
             end
 
             entries= jUnisens.getEntries();
