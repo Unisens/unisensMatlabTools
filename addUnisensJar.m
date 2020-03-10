@@ -4,7 +4,7 @@ function addUnisensJar()
 
 % Copyright 2018 movisens GmbH, Germany
 
-	version = '2.2.1';
+	version = '2.3.0';
 	unisensJar=['unisens-' version '.jar'];
 	dPath = javaclasspath('-dynamic');
 	
