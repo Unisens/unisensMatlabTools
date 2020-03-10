@@ -12,7 +12,7 @@ function unisensCsv2Bin(path, new_path)
     end
     
     if nargin ==1
-        new_path = [path '_csv'];
+        new_path = [path '_bin'];
     end
 	
     %open unisens dataset
