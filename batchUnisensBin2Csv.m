@@ -12,6 +12,7 @@ pathList = getAllUnisensPaths(basePath);
 
 for i=1:length(pathList);
     path = pathList{i};
-	out = strrep(path,basePath,[basePath '_csv'])
+	out = strrep(path,basePath,[basePath '_csv']);
+    disp(['Converting: ' path]);
     unisensBin2Csv(path,false,out);
 end
