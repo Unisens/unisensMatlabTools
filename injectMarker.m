@@ -12,7 +12,7 @@ function injectMarker(measurementPath, markerPath)
 
 	addUnisensJar;
 
-    jUnisensFactory = org.unisens.UnisensFactoryBuilder.createFactory();
+    jUnisensFactory=javaMethod ('createFactory', 'org.unisens.UnisensFactoryBuilder');
     targetUnisens = jUnisensFactory.createUnisens(measurementPath);
     sourceUnisens = jUnisensFactory.createUnisens(markerPath);
     
