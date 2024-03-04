@@ -42,7 +42,7 @@ function injectMarker(measurementPath, markerPath)
     targetDuration = ecgEntry.getCount() / targetSamplerate;
     
     %create target marker entry
-    targetMarkerEntry=targetUnisens.createEventEntry('Marker.csv', targetSamplerate);
+    targetMarkerEntry=targetUnisens.createEventEntry('marker.csv', targetSamplerate);
     targetMarkerEntry.setCommentLength(100);
     targetMarkerEntry.setTypeLength(100);
     targetMarkerEntry.setFileFormat(targetMarkerEntry.createCsvFileFormat);
