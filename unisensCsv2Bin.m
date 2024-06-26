@@ -1,8 +1,11 @@
 function unisensCsv2Bin(path, new_path)
 %UNISENSCSV2BIN convert unisens dataset with csv entries to dataset with bin entries
-% Converts all unisens signal entries from csv format (*.csv) to bin format (*.bin). 
-% Event entries and values entries are not affected
-
+%   Converts all unisens signal entries from csv format (*.csv) to bin format (*.bin). 
+%   Event entries and values entries are not affected
+%
+%   path: the path of the dataset to be converted, i.e. the unisens folder, that contains a unsiens.xml file
+%   new_path: the path of the unisensDataset with entries in bin format
+%
 % Copyright 2017 movisens GmbH
 
 	addUnisensJar();

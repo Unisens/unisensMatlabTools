@@ -1,13 +1,17 @@
 function unisensBin2Csv(path, keepSensorScaling, new_path)
 %UNISENSBIN2CSV convert unisens dataset with bin entries to dataset with csv entries
-% Converts all unisens signal entries from binary format (*.bin) to csv format (*.csv)
-
+%   Converts all unisens signal entries in a unisens dataset from binary format (*.bin) to csv format (*.csv)
+%
+%	path: the path of the dataset to be converted, i.e. the unisens folder, that contains a unsiens.xml file
+%	keepScaling: if set to true the original scaling of signal entries is kept. Set keepScaling to false if csv file will be used directly without unisens library or tools, e.g in Excel.
+%   new_path: the path of the unisensDataset with entries in csv format
+%
 % Copyright 2017 movisens GmbH
 
 	addUnisensJar();
 	
 	if nargin==0 || nargin>3
-		error('unisensTools:missingArugments','Wrong number of Arguments.\nUsage:\nunisensBin2Csv(''path_to_unisens_bin_dataset\'') \nunisensBin2Csv(''path_to_unisens_bin_dataset\'', ''path_to_new_unisens_csv_dataset\'')');
+		error('unisensTools:missingArugments','Wrong number of Arguments.\nUsage:\nunisensBin2Csv(''path_to_unisens_bin_dataset\'') \nunisensBin2Csv(''path_to_unisens_bin_dataset\'', false, ''path_to_new_unisens_csv_dataset\'')');
     end
     
     if nargin ==1
