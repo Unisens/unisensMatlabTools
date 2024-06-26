@@ -65,7 +65,7 @@ function excel2UnisensHeaders(path, testDrive)
                     disp('measurementId will be updated');
                 else
                     jUnisens.setMeasurementId(measurementIdNew);
-                    logFile = [logFile sprintf('Updated measurementId from %s to %s\n',measurementId, measurementIdNew)];
+                    logFile = [logFile sprintf('Updated measurementId from %s to %s\n',char(measurementId), measurementIdNew)];
                 end
             end
             

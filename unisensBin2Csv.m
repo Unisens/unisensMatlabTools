@@ -20,7 +20,7 @@ function unisensBin2Csv(path, keepSensorScaling, new_path)
 	end
 
     %open unisens dataset
-    j_unisensFactory = org.unisens.UnisensFactoryBuilder.createFactory();
+    j_unisensFactory = javaMethod ('createFactory', 'org.unisens.UnisensFactoryBuilder');
     j_unisens = j_unisensFactory.createUnisens(path);
 
     %create new unisens dataset
@@ -117,7 +117,7 @@ function signal_entry_convert(j_entry, j_unisens_new, keepSensorScaling)
 		j_entry_new.setLsbValue(j_entry.getLsbValue());
 		j_entry_new.setBaseline(j_entry.getBaseline());
     else
-        j_entry_new=j_unisens_new.createSignalEntry(newId, j_entry.getChannelNames, org.unisens.DataType.DOUBLE , j_entry.getSampleRate());
+        j_entry_new=j_unisens_new.createSignalEntry(newId, j_entry.getChannelNames, javaMethod('valueOf','org.unisens.DataType','DOUBLE') , j_entry.getSampleRate());
     end
     j_entry_new.setFileFormat(j_entry_new.createCsvFileFormat());
     j_entry_new.setComment(j_entry.getComment());
