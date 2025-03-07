@@ -5,11 +5,13 @@ This library provides some useful tools to work with the unisens data format in 
 It makes use of [unisens4java library](https://github.com/Unisens/unisens4java), [unisesn2excelLibs](https://github.com/Unisens/unisens2excel) and [Apache POI](https://poi.apache.org/).
 
 ## License
+
 The unisensMatlabTools library is licensed under the LGPL.
 <br />
 <br />
 
 ## Descriptions of the matlab functions
+
 | Matlab function | Description |
 |-----------------|-------------|
 |addUnisensJar.m|Add unisens.jar to java path|
@@ -42,3 +44,44 @@ The unisensMatlabTools library is licensed under the LGPL.
 |unisensReadSignal.m|read a single signal from a unisens dataset|
 |unisensSynchronize.m|synchronizes two unisens datasets|
 |unitPrefix2Factor.m|get factor from unit prefix|
+
+## Detailed descriptions
+
+### # unisens2xls
+
+This Matlab Skript converts unisens timeseries with a specific samplerate (usually 1/60s) to Excel Results.xlsx files. In addition markers and other non equdistand event data, stored in unisens event entries, are converted.
+
+The standard format for marker is:
+
+  ```text
+  (2018-07-24T18:12:03.851; M; Maker 1)
+   ```
+
+The underlying java library (<https://github.com/Unisens/unisens2excel>) also supports JSON format:
+
+  ```json
+  [{"date":"2018-07-24T18:12:03.851","type":"M","comment":"Maker 1"}]
+  ```
+
+#### Convert single unisens dataset
+
+```matlab
+
+unisens2xls(unisensPath);
+
+unisens2xls(unisensPath, sampleRate);
+
+unisens2xls(unisensPath, sampleRate, excelPathAndFile);
+
+```
+
+When no samplerate is given 1/60s is assumed.
+When no excelPathAndFile is give, ```unisensPath\Results.xslx``` i used.
+
+#### Batch convert datasets
+
+```matlab
+
+batchUnisens2Excel (basePath, sampleRate);
+
+```

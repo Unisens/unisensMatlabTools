@@ -12,7 +12,7 @@ function unisens2xls(unisensPath, sampleRate, excelPathAndFile)
     end
 
     if nargin == 2
-        excelPathAndFile = [unisensPath filesep 'Results.xlsx'];
+        excelPathAndFile = [unisensPath filesep 'Results.xlsx']
     end
 
     currentMFile=mfilename('fullpath');
@@ -26,14 +26,16 @@ function unisens2xls(unisensPath, sampleRate, excelPathAndFile)
     javaaddpath([jarPath filesep 'poi-ooxml-3.9.jar']);
     javaaddpath([jarPath filesep 'poi-ooxml-schemas-3.9.jar']);
     javaaddpath([jarPath filesep 'xmlbeans-2.3.0.jar']);
-    javaaddpath([jarPath filesep 'org.unisens.unisens2excel-1.0.3.jar']);
-    
-    import org.unisens.unisens2excel.*
-    
+    javaaddpath([jarPath filesep 'unisens2excel-1.0.5.jar']);
+	javaaddpath([jarPath filesep 'jackson-databind-2.10.0.jar']);
+	javaaddpath([jarPath filesep 'jackson-core-2.10.0.jar']);
+	javaaddpath([jarPath filesep 'jackson-annotations-2.10.0.jar']);
+	
+	
     %check if file already exists
     if exist(excelPathAndFile, 'file') ~= 2
         disp(['Procesing ' unisensPath]);
-        u2xls=Unisens2Excel(unisensPath, sampleRate, excelPathAndFile);
+        u2xls=javaObject('org.unisens.unisens2excel.Unisens2Excel', unisensPath, sampleRate, excelPathAndFile);
         u2xls.renderXLS();
     end
     
